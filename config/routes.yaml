@@ -1,0 +1,27 @@
+index:
+    path: /
+    controller: App\Controller\LoginController::login
+
+login:
+    path: /login 
+    controller: App\Controller\SecurityController::login
+
+change_password:
+    path: /change_password 
+    controller: App\Controller\SecurityController::changePassword
+
+home:
+    path: /home
+    controller: App\Controller\HomeController::home
+
+search:
+    path: /search
+    controller: App\Controller\SearchController::search
+
+statistics:
+    path: /statistics
+    controller: App\Controller\StatisticsController::statistics
+
+user:
+    path: /user
+    controller: App\Controller\UserController::user

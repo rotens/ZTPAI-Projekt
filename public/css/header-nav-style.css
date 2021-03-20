@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoe-ui-4-cufonfonts/Segoe\ UI.ttf');
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoe-ui-4-cufonfonts/Segoe\ UI\ Bold.ttf');
+    font-weight: bold;
+}
+
+body {
+    margin: 0 auto;
+}
+
+h1, p {
+    margin: 0;
+}
+
+header {
+    width: 100vw;
+    height: 67px;
+    background: transparent linear-gradient(180deg, #17A9FDC6 0%, #1877F2 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 6px #00000087;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    font: normal normal normal 40px Segoe UI;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+header a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+header a:visited {
+    color: #FFFFFF;
+}
+
+nav {
+    width: 100vw;
+    height: 63px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+nav ul {
+    width: 55em; 
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    font: normal normal 600 20px Segoe UI;
+    letter-spacing: 0px;
+    color: #000000;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:link {
+    color: #000000;
+}
+
+nav a:visited {
+    color: #000000;
+}
+
+.not-valid {
+    border: 2px solid #FF0000 !important;
+    box-shadow: 0 0 0.2em #FF0000;
+    outline: none;
+}
+
+@media only screen and (max-device-width: 640px) {
+    header {
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header h1 {
+        font-size: 5vh;
+    }
+
+    nav {
+        width: 100vw;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        padding-top: 1em;
+        padding-bottom: 3.5em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav li {
+        padding-top: 24px;
+        padding-bottom: 12px;
+        width: 75%;
+        text-align: center;
+        font-size: 3vh;
+        box-sizing: border-box;
+        border-bottom: 1px solid #a1a1a1;
+        box-shadow: 0 8px 0 #F0F2F5;
+    }
+
+    nav li:nth-child(5) {
+        border-bottom: 0;
+        box-shadow: 0 0 0;
+    }
+}

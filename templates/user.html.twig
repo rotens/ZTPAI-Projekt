@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
+    <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
+    <title>Twarzobaza</title>
+</head>
+<body>
+    <div class="main-container">
+        {{ include('header_nav.html.twig') }}
+        <main>
+           <section class="user-info-container">
+               <div class="user-info">
+                    <h1>Piotr Sobczak</h1>
+                    <p>Dołączył: 2017-09-21</p>
+                    <p>Pełne uprawnienia</p>
+                    <p>Konta: Piotr Sobczak (ID 10), Piotr Sobczak (ID 12)</p>
+                    <a href="change_password">Zmień hasło</a>
+               </div>
+               <div class="user-image">
+                   <img src="{{ asset('img/sobczak.JPG') }}">
+               </div>
+           </section>
+        </main>
+    </div>
+</body>
