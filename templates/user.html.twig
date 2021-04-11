@@ -13,7 +13,11 @@
                <div class="user-info">
                     <h1>Piotr Sobczak</h1>
                     <p>Dołączył: 2017-09-21</p>
-                    <p>Pełne uprawnienia</p>
+                    {% if is_granted('ROLE_FULL') %}
+                        <p>Pełne uprawnienia</p>
+                    {% else %}
+                        <p>Częściowe uprawnienia</p>
+                    {% endif %}
                     <p>Konta: Piotr Sobczak (ID 10), Piotr Sobczak (ID 12)</p>
                     <a href="change_password">Zmień hasło</a>
                </div>

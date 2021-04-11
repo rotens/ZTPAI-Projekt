@@ -2,14 +2,6 @@ index:
     path: /
     controller: App\Controller\SecurityController::login
 
-login:
-    path: /login 
-    controller: App\Controller\SecurityController::login
-
-change_password:
-    path: /change_password
-    controller: App\Controller\SecurityController::changePassword
-
 home:
     path: /home
     controller: App\Controller\HomeController::home

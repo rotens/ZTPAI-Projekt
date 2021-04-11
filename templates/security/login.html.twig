@@ -1,10 +1,8 @@
-<!-- <?php session_start(); ?> -->
-
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/login-style.css') }}"> 
-    <title>Twarzobaza</title>
+    <title>Twarzobaza Logowanie</title>
 </head>
 <body>
     <div class="main-container">
@@ -12,20 +10,32 @@
             <h1>twarzobaza</h1>
         </header>
         <div class="login-form-container">
-            <form class="login-form" action="login" method="POST">
+            <form class="login-form" method="POST" action="login">
                 <div class="form-header">
                     <h1>logowanie</h1>
                 </div>
-                <!-- <?php if (isset($message)): ?>
-                <p class="login-form-message"><?= $message ?></p>
-                <?php endif; ?> -->
+
+                {% if error %}
+                    <p class="login-form-message">{{ error.messageKey|trans(error.messageData, 'security', 'pl') }}</p>
+                {% endif %}
+
                 <div class="login-container">
                     <p>Login</p>
-                    <input name="login" type="text" placeholder="Login">
+                    <input name="username" value="{{ last_username }}" type="text" placeholder="Login" required autofocus>
                 </div>
                 <div class="password-container">
                     <p>Hasło</p>
-                    <input name="password" type="password" placeholder="Hasło">
+                    <input name="password" type="password" placeholder="Hasło" required>
+                </div>
+
+                <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                >
+
+                <div class="remember-me-checkbox">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Zapamiętaj mnie
+                    </label>
                 </div>
                 <div class="button-container">
                     <button class="login-button" type="submit">zaloguj</button>
