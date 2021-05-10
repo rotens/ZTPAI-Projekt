@@ -1,12 +1,10 @@
-<!-- <?php session_start(); ?> -->
-
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/search-style.css') }}">
     <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ asset('js/search.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/search-validation.js') }}" defer></script>
+    <!-- <script type="text/javascript" src="{{ asset('js/search.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('js/search-validation.js') }}" defer></script> -->
     <title>Twarzobaza</title>
 </head>
 <body>
@@ -14,27 +12,22 @@
         {{ include("header_nav.html.twig") }}
         <main>
             <section class="search-form-container">
-                <form class="search-form">
+                {{ form_start(form, {'method': 'POST', 'attr': {'class': 'search-form'}}) }}
                     <label for="user">Użytkownik</label>
-                    <select name="Account[]" class="user-select">
-                    <option value="all">*</option>
-                    <!-- <?php 
-                        if (isset($accounts))
-                            foreach($accounts as $account):
-                    ?> -->
-                        <!-- <option value="<?= $account['name'] ?>"><?= $account['name'] ?></option>
-                    <?php endforeach; ?> -->
-                    </select>
+                    {{ form_widget(form.user) }}
                     <p class="date-input-text">Data (format RRRR-MM-DD GG:MM:SS)</p>
-                    <input name="from" type="text" placeholder="Od">
-                    <input name="to" type="text" placeholder="Do">
+                    {{ form_widget(form.start_date) }}
+                    {{ form_widget(form.end_date) }}
                     <p class="search-input-text">Szukana fraza</p>
                     <div class="search-input-container">
-                        <input name="search_input" type="text" placeholder="Szukaj">
-                        <button type="button"><i class="fas fa-search"></i></button>
+                        {{ form_widget(form.search_input) }}
+                        {{ form_widget(form.search, {'attr': {'class': 'fas fa-search'}, 'value': ''}) }}
                     </div>
-                </form>
-            </section>
+                    {{ form_widget(form._token) }}
+                {{ form_end(form, {'render_rest': false})}}
+                {# {{ form(form) }} #}
+            </section> 
+            
             <section class="results-container">
                 <h1></h1>
                 <div class="results-table-container">
