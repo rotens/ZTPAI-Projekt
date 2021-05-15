@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ApiResource(
  *      collectionOperations={"get"},
- *      itemOperations={"get"}
+ *      itemOperations={"get", "put"}
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
