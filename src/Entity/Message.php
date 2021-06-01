@@ -8,11 +8,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Dto\MessageInput;
+use App\Dto\MessageOutput;
 
 /**
  * @ApiResource(
  *      collectionOperations={"get", "post"},
- *      itemOperations={"get", "put", "delete"}
+ *      itemOperations={"get", "put", "delete"},
+ *      output=MessageOutput::CLASS
  * )
  * @ApiFilter(SearchFilter::class, properties={"message": "partial", "account": "exact"})
  * @ApiFilter(DateFilter::class, properties={"date"})
