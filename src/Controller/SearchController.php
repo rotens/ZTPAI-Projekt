@@ -8,7 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 class SearchController extends AbstractController
 {
@@ -16,31 +18,41 @@ class SearchController extends AbstractController
     {
         $defaultData = ['message' => 'Default message'];
 
+        $results = $this->getDoctrine()
+            ->getRepository(Account::class)
+            ->findAll();
+
+        $accountNames["*"] = "";
+        foreach($results as $account) {
+            $accountNames[$account->getName()] = $account->getName();
+        }
+
+
         $form = $this->createFormBuilder($defaultData)
-            ->add('user', EntityType::class, [
-                'class' => Account::class,
-                'choice_label' => 'name',
+            ->add('user', ChoiceType::class, [
+                'choices' => $accountNames,
                 'attr' => [
                     'class' => 'user-select'
                 ],
-                'label' => false
+                'label' => false,
+                'required' => false
             ])
-            ->add('start_date', TextType::class)
-            ->add('end_date', TextType::class)
-            ->add('search_input', TextType::class)
-            ->add('search', SubmitType::class, array(
+            ->add('start_date', TextType::class, [
+                'required' => false
+            ])
+            ->add('end_date', TextType::class, [
+                'required' => false
+            ])
+            ->add('search_input', TextType::class, [
+                'required' => false
+            ])
+            ->add('search', ButtonType::class, [
                 'label' => false,
                 'attr' => array(
                     'value' => ''
                 )
-            )) 
+            ]) 
             ->getForm();
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            echo "test";
-        }
 
         return $this->render('search.html.twig', [
             'form' => $form->createView(),

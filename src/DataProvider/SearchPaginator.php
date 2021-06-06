@@ -13,6 +13,7 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
     private $messageRepository;
     private $currentPage;
     private $maxResults;
+    private $totalItems;
 
     /**
      * @var string|null
@@ -69,7 +70,8 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
 
     public function getTotalItems(): float
     {
-        return count($this->messageRepository->findAll());
+        // return count($this->messageRepository->findAll());
+        return $this->totalItems;
     }
 
     public function getCurrentPage(): float
@@ -102,6 +104,15 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
                 $offset
             );
 
+            $this->totalItems = count(
+                $this->messageRepository->findSearch(
+                    $this->accountName,
+                    $this->message,
+                    $this->dateFrom,
+                    $this->dateTo
+                )
+            );
+
             return $result;
         }
 
@@ -112,6 +123,14 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
                 $this->dateFrom,
                 $this->getItemsPerPage(),
                 $offset
+            );
+
+            $this->totalItems = count(
+                $this->messageRepository->findSearchDateFrom(
+                    $this->accountName,
+                    $this->message,
+                    $this->dateFrom
+                )
             );
 
             return $result;
@@ -126,6 +145,14 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
                 $offset
             );
 
+            $this->totalItems = count(
+                $this->messageRepository->findSearchDateTo(
+                    $this->accountName,
+                    $this->message,
+                    $this->dateTo
+                )
+            );
+
             return $result;
         }
 
@@ -134,6 +161,13 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
             $this->message,
             $this->getItemsPerPage(),
             $offset
+        );
+
+        $this->totalItems = count(
+            $this->messageRepository->findSearchNoDateParam(
+                $this->accountName,
+                $this->message
+            )
         );
 
         return $result;

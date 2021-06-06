@@ -3,8 +3,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/search-style.css') }}">
     <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="{{ asset('js/search.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/search-validation.js') }}" defer></script> -->
+    <script type="text/javascript" src="{{ asset('js/search.js') }}" defer></script>
+    {# // <script type="text/javascript" src="{{ asset('js/search-validation.js') }}" defer></script>  #}
     <title>Twarzobaza</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         {{ include("header_nav.html.twig") }}
         <main>
             <section class="search-form-container">
-                {{ form_start(form, {'method': 'POST', 'attr': {'class': 'search-form'}}) }}
+                {{ form_start(form, {'attr': {'class': 'search-form'}}) }}
                     <label for="user">Użytkownik</label>
                     {{ form_widget(form.user) }}
                     <p class="date-input-text">Data (format RRRR-MM-DD GG:MM:SS)</p>
@@ -34,6 +34,13 @@
                     <table>
                     </table>
                 </div>
+                <div class="pagination">
+                    <span id="previous">&#60;</span>
+                    <span id="current-page"></span>
+                    <span>z</span>
+                    <span id="last-page">5</span>
+                    <span id="next">&#62;</span>
+                </div>
             </section>
             <br><br>
         </main>
@@ -54,6 +61,10 @@
         <td>Data</td>
         <td>Treść wiadomości</td>
     </tr>
+</template>
+
+<template id="pagination-template">
+        
 </template>
 
 

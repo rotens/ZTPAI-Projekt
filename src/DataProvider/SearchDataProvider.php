@@ -25,7 +25,6 @@ class SearchDataProvider implements ContextAwareCollectionDataProviderInterface,
       $this->pagination = $pagination;
     }
 
-
     public function getCollection(string $resourceClass, string $operationName = null, array $context = [])
     {
        

@@ -184,6 +184,17 @@ main {
     width: 90%;
 }
 
+.pagination {
+    margin-top: 1em;
+    margin-left: 5%;
+    display: none;
+    font-weight: bold;
+}
+
+#previous:hover, #next:hover {
+    cursor: pointer;
+}
+
 li:hover {
     color: #000000;
 }
