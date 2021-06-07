@@ -66,12 +66,14 @@ function loadMessages(messages) {
 
 function createMessage(message) {
     const template = document.querySelector("#message-template");
-
     const clone = template.content.cloneNode(true);
+
     const user = clone.querySelector("td:nth-child(1)");
     user.innerText = message["account_name"];
+
     const date = clone.querySelector("td:nth-child(2)");
     date.innerText = transformDateString(message["date"]);
+
     const message_content = clone.querySelector("td:nth-child(3)");
     message_content.innerText = message["message"];
 

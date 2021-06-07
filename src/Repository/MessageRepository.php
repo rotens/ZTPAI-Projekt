@@ -29,7 +29,13 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findSearch(string $account_name="%", string $message="%", string $dateFrom, string $dateTo, int $limit = null, int $offset = null)
+    public function findSearch(
+        string $accountName="%", 
+        string $message="%", 
+        string $dateFrom, 
+        string $dateTo, 
+        int $limit = null, 
+        int $offset = null)
     {
         return $this->createQueryBuilder('m')
             ->select("m.id, a.name, m.date, m.message")
@@ -38,7 +44,7 @@ class MessageRepository extends ServiceEntityRepository
             ->andWhere("m.message LIKE :message")
             ->andWhere("m.date >= :dateFrom")
             ->andWhere("m.date <= :dateTo")
-            ->setParameter("account_name", "%".$account_name."%")
+            ->setParameter("account_name", "%".$accountName."%")
             ->setParameter("message", "%".$message."%")
             ->setParameter("dateFrom", $dateFrom)
             ->setParameter("dateTo", $dateTo)
@@ -49,7 +55,12 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findSearchDateFrom(string $account_name="%", string $message="%", string $dateFrom, int $limit = null, int $offset = null)
+    public function findSearchDateFrom(
+        string $accountName="%", 
+        string $message="%", 
+        string $dateFrom, 
+        int $limit = null, 
+        int $offset = null)
     {
         return $this->createQueryBuilder('m')
             ->select("m.id, a.name, m.date, m.message")
@@ -57,7 +68,7 @@ class MessageRepository extends ServiceEntityRepository
             ->where("a.name LIKE :account_name")
             ->andWhere("m.message LIKE :message")
             ->andWhere("m.date >= :dateFrom")
-            ->setParameter("account_name", "%".$account_name."%")
+            ->setParameter("account_name", "%".$accountName."%")
             ->setParameter("message", "%".$message."%")
             ->setParameter("dateFrom", $dateFrom)
             ->setFirstResult($offset)
@@ -67,7 +78,12 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findSearchDateTo(string $account_name="%", string $message="%", string $dateTo, int $limit = null, int $offset = null)
+    public function findSearchDateTo(
+        string $accountName="%", 
+        string $message="%", 
+        string $dateTo, 
+        int $limit = null, 
+        int $offset = null)
     {
         return $this->createQueryBuilder('m')
             ->select("m.id, a.name, m.date, m.message")
@@ -75,7 +91,7 @@ class MessageRepository extends ServiceEntityRepository
             ->where("a.name LIKE :account_name")
             ->andWhere("m.message LIKE :message")
             ->andWhere("m.date <= :dateTo")
-            ->setParameter("account_name", "%".$account_name."%")
+            ->setParameter("account_name", "%".$accountName."%")
             ->setParameter("message", "%".$message."%")
             ->setParameter("dateTo", $dateTo)
             ->setFirstResult($offset)
@@ -85,17 +101,97 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findSearchNoDateParam(string $account_name="%", string $message="%", int $limit = null, int $offset = null)
+    public function findSearchNoDateParam(
+        string $accountName="%", string $message="%", 
+        int $limit = null, int $offset = null)
     {
         return $this->createQueryBuilder('m')
             ->select("m.id, a.name, m.date, m.message")
             ->innerJoin('m.account', 'a')
             ->where("a.name LIKE :account_name")
             ->andWhere("m.message LIKE :message")
-            ->setParameter("account_name", "%".$account_name."%")
+            ->setParameter("account_name", "%".$accountName."%")
             ->setParameter("message", "%".$message."%")
             ->setFirstResult($offset)
             ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findYearStatistics(string $accountName) {
+        return $this->createQueryBuilder('m')
+            ->select("YEAR(m.date) as date_year, count(m.id) as num")
+            ->innerJoin('m.account', 'a')
+            ->where("a.name LIKE :account_name")
+            ->groupBy("date_year")
+            ->orderBy("date_year")
+            ->setParameter("account_name", "%".$accountName."%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findMonthStatistics(string $accountName) {
+        return $this->createQueryBuilder('m')
+            ->select("MONTH(m.date) as date_month, count(m.id) as num")
+            ->innerJoin('m.account', 'a')
+            ->where("a.name LIKE :account_name")
+            ->groupBy("date_month")
+            ->orderBy("date_month")
+            ->setParameter("account_name", "%".$accountName."%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findDayStatistics(string $accountName) {
+        return $this->createQueryBuilder('m')
+            ->select("DAY(m.date) as date_day, count(m.id) as num")
+            ->innerJoin('m.account', 'a')
+            ->where("a.name LIKE :account_name")
+            ->groupBy("date_day")
+            ->orderBy("date_day")
+            ->setParameter("account_name", "%".$accountName."%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findWeekdayStatistics(string $accountName) {
+        return $this->createQueryBuilder('m')
+            ->select("DAYOFWEEK(m.date) as date_weekday, count(m.id) as num")
+            ->innerJoin('m.account', 'a')
+            ->where("a.name LIKE :account_name")
+            ->groupBy("date_weekday")
+            ->orderBy("date_weekday")
+            ->setParameter("account_name", "%".$accountName."%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findHourStatistics(string $accountName) {
+        return $this->createQueryBuilder('m')
+            ->select("HOUR(m.date) as date_hour, count(m.id) as num")
+            ->innerJoin('m.account', 'a')
+            ->where("a.name LIKE :account_name")
+            ->groupBy("date_hour")
+            ->orderBy("date_hour")
+            ->setParameter("account_name", "%".$accountName."%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findYearMonthStatistics(string $accountName) {
+        return $this->createQueryBuilder('m')
+            ->select("YEAR(m.date) date_year, MONTH(m.date) date_month, count(m.id) as num")
+            ->innerJoin('m.account', 'a')
+            ->where("a.name LIKE :account_name")
+            ->groupBy("date_year, date_month")
+            ->orderBy("date_year, date_month")
+            ->setParameter("account_name", "%".$accountName."%")
             ->getQuery()
             ->getResult()
         ;

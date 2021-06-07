@@ -4,8 +4,6 @@ namespace App\Filter;
 
 use ApiPlatform\Core\Serializer\Filter\FilterInterface;
 use Symfony\Component\HttpFoundation\Request;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
-use Doctrine\ORM\QueryBuilder;
 
 class CustomSearchFilter implements FilterInterface
 {

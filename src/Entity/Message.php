@@ -15,10 +15,7 @@ use App\Dto\MessageOutput;
  * @ApiResource(
  *      collectionOperations={"get", "post"},
  *      itemOperations={"get", "put", "delete"},
- *      output=MessageOutput::CLASS
  * )
- * @ApiFilter(SearchFilter::class, properties={"message": "partial", "account": "exact"})
- * @ApiFilter(DateFilter::class, properties={"date"})
  * @ORM\Entity(repositoryClass=MessageRepository::class)
  */
 class Message

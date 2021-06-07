@@ -15,7 +15,6 @@ use DateTime;
 
 class SearchDataProvider implements ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
 {
-
     private $managerRegistry;
     private $pagination;
 
