@@ -9,6 +9,9 @@ class UserController extends AbstractController
 {
     public function user(): Response
     {
-        return $this->render('user.html.twig');
+        return $this->render('user.html.twig', [
+            "user" => $this->getUser(),
+            "accounts" => $this->getUser()->getAccounts(),
+        ]);
     }
 }
