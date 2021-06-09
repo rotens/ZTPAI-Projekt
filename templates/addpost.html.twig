@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/post-style.css') }}">
+    <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
+    <title>Twarzobaza</title>
+</head>
+<body>
+    <div class="main-container">
+        {{ include('header_nav.html.twig') }}
+        <main>
+            {{ form_start(form, {'method': 'POST', 'attr': {'class': 'post-form'}}) }}
+                {{ form_widget(form.title, {'attr': {'class': 'title-input'}}) }}
+                {{ form_widget(form.content, {'attr': {'class': 'content-textarea'}}) }}
+                {{ form_widget(form.addpost, {'attr': {'class': 'submit-button'}}) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </main>
+    </div>
+</body>

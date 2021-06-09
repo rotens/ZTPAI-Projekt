@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/post-style.css') }}">
+    <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
+    <title>Twarzobaza</title>
+</head>
+<body>
+    <div class="main-container">
+        {{ include('header_nav.html.twig') }}
+        <main>
+            <div class="post">
+                <h1> {{ post.title }} </h1>
+                <p> {{ post.content }}</p>
+                <div class="post-bottom">
+                    <div class="date-author">
+                        <span class="author"><b>Autor: </b>{{ post.author.name }}</span>
+                        <span class="date"><b>Data dodania: </b>{{ post.date|date("Y-m-d H:i:s") }}</span>
+                    </div>
+                    {% if app.user.id == post.author.id %}
+                        <span class="edit">Edytuj</span>
+                        <span class="remove">Usuń</span>
+                    {% endif %}
+                </div>
+                <input class="postid" type="hidden" value="{{ post.id }}">
+            </div>
+        </main>
+    </div>
+</body>

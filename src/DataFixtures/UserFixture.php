@@ -23,7 +23,7 @@ class UserFixture extends Fixture
         $password = $this->encoder->encodePassword($user1, "psobczak2138!");
         $user1->setPassword($password);
         $user1->setName("Piotr Sobczak");
-        $user1->setJoinDate(new \DateTime());
+        $user1->setJoinDate(new \DateTime("2017-02-02 14:32:21"));
         $user1->setRoles(["ROLE_FULL"]);
         $manager->persist($user1);
 
@@ -32,7 +32,7 @@ class UserFixture extends Fixture
         $password = $this->encoder->encodePassword($user2, "mdebowski2139!");
         $user2->setPassword($password);
         $user2->setName("Michał Dębowski");
-        $user2->setJoinDate(new \DateTime());
+        $user2->setJoinDate(new \DateTime("2018-06-02 14:32:21"));
         $user2->setRoles(["ROLE_RESTRICTED"]);
         $manager->persist($user2);
 

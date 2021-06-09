@@ -11,6 +11,27 @@
         <main>
             <h1>Witaj!</h1>
             <p>Data aktualnej bazy: 20.02.2021</p>
+            <hr>
+            {% if is_granted('ROLE_FULL') %}
+                <a class="add-post" href="{{ path('app_addpost') }}">DODAJ POST</a>
+            {% endif %}
+
+            {% for post in posts %}
+                <div class="post">
+                    <h1> {{ post.title }} </h1>
+                    <p> {{ post.content }}</p>
+                    <div class="post-bottom">
+                        <div class="date-author">
+                            <span class="author"><b>Autor: </b>{{ post.author.name }}</span>
+                            <span class="date"><b>Data dodania: </b>{{ post.date|date("Y-m-d H:i:s") }}</span>
+                        </div>
+                        {% if app.user.id == post.author.id %}
+                            <span class="remove">Usuń</span>
+                        {% endif %}
+                    </div>
+                    <input class="postid" type="hidden" value="{{ post.id }}">
+                </div>
+            {% endfor %}
         </main>
     </div>
 </body>

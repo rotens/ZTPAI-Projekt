@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Message;
 use App\Entity\Statistics;
 use App\Repository\MessageRepository;
+use App\Entity\Post;
 
 
 class HomeController extends AbstractController
@@ -15,7 +16,8 @@ class HomeController extends AbstractController
     {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $repository = $entityManager->getRepository(Message::class);
+        $repository = $entityManager->getRepository(Post::class);
+        $posts = $repository->findAllOrderedByDate();
         // $results = $repository->search(
         //     "%", "%",
         //     "2018-03-02T20:19:21",
@@ -33,9 +35,9 @@ class HomeController extends AbstractController
         //     echo $obj["name"] . " " . $obj["date"]->format('Y-m-d H:i:s') . " " . $obj["message"] . "<br>"; 
         // }
 
-        
-        
 
-        return $this->render('home.html.twig');
+        return $this->render('home.html.twig', [
+            "posts" => $posts
+        ]);
     }
 }

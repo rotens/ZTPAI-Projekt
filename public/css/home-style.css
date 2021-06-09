@@ -1,6 +1,5 @@
 .main-container {
     width: 100vw;
-    height: 100vh;
     background: #F0F2F5 0% 0% no-repeat padding-box;
     display: flex;
     flex-direction: column;
@@ -9,12 +8,12 @@
 
 main {
     width: 55em;
-    height: 500px;
     margin-top: 1.5vh;
     padding: 1em 2em 1em 2em;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 6px;
+    padding-bottom: 2em;
 }
 
 main h1 {
@@ -27,6 +26,49 @@ main p {
     font: normal normal normal 30px Segoe UI;
     letter-spacing: 0px;
     color: #000000;
+}
+
+.add-post {
+    margin-top: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 1.5em;
+    color: #1877F2;
+}
+
+.add-post:visited {
+    color: #1877F2;
+}
+
+.post {
+    margin-top: 2em;
+}
+
+.post-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.post h1 {
+    font-size: 1.5em;
+}
+
+.post p {
+    text-align: justify;
+    margin-bottom: 1em;
+    font-size: 16px;
+}
+
+.date {
+    margin-left: 1em;
+}
+
+.remove {
+    color: red;
+    margin-right: 1em;
 }
 
 @media only screen and (max-device-width: 640px) {

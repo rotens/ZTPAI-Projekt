@@ -33,7 +33,6 @@ class StatisticsController extends AbstractController
             "Rok Miesiąc" => "year_month",
         ];
 
-
         $form = $this->createFormBuilder($defaultData)
             ->add('user', ChoiceType::class, [
                 'choices' => $accountNames,
