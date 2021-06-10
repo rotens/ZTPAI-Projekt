@@ -65,6 +65,16 @@ main {
     color:  #1877F2;
 }
 
+.confirm {
+    display: none;
+    color:  #1877F2;
+}
+
+.undo {
+    display: none;
+    color: red;
+}
+
 @media only screen and (max-device-width: 640px) {
     main {
         width: 100%;

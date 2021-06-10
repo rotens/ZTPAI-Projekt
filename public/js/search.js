@@ -81,8 +81,12 @@ function createMessage(message) {
 }
 
 function pagination(arg) {
-    let lastPage = parseInt(arg["hydra:last"].slice(-1));
-
+    let lastPage = 1;
+  
+    if (arg.hasOwnProperty('hydra:last')) {
+       lastPage = parseInt(arg["hydra:last"].slice(-1));
+    }
+     
     paginationDiv.style = "display: block";
     paginationDiv.children["1"].innerHTML = currentPage;
     paginationDiv.children["3"].innerHTML = lastPage;
@@ -97,9 +101,7 @@ function pagination(arg) {
         nextPage.style="display: none";
     } else {
         nextPage.style="display: inline";
-    }
-
-    console.log(paginationDiv);
+    }    
 }
 
 function createSearchGetLink(data, page=1) {

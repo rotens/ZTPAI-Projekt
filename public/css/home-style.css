@@ -71,6 +71,10 @@ main p {
     margin-right: 1em;
 }
 
+.see-post {
+    
+}
+
 @media only screen and (max-device-width: 640px) {
     main {
         width: 100%;

@@ -70,7 +70,6 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
 
     public function getTotalItems(): float
     {
-        // return count($this->messageRepository->findAll());
         return $this->totalItems;
     }
 
@@ -177,12 +176,7 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
     {
         if ($this->searchIterator === null) {
 
-            //$offset = (($this->getCurrentPage() - 1) * $this->getItemsPerPage());
             $result = $this->getResult();
-            // $result = $this->messageRepository->findAllLimit(
-            //     $this->getItemsPerPage(),
-            //     $offset
-            // );
             $objects = [];
 
             foreach($result as $obj) {
@@ -192,12 +186,6 @@ class SearchPaginator implements PaginatorInterface, \IteratorAggregate
                     $obj['date'],
                     $obj['message']
                 );
-                // $objects[] = new Search(
-                //     $obj->getId(),
-                //     $obj->getAccount()->getName(),
-                //     $obj->getDate(),
-                //     $obj->getMessage()
-                // );
             }
 
             $this->searchIterator = new \ArrayIterator($objects);

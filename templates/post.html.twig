@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/post-style.css') }}">
     <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('js/post.js') }}" defer></script>
     <title>Twarzobaza</title>
 </head>
 <body>
@@ -10,8 +11,8 @@
         {{ include('header_nav.html.twig') }}
         <main>
             <div class="post">
-                <h1> {{ post.title }} </h1>
-                <p> {{ post.content }}</p>
+                <h1 class="post-title"> {{ post.title }} </h1>
+                <p class="post-content"> {{ post.content }} </p>
                 <div class="post-bottom">
                     <div class="date-author">
                         <span class="author"><b>Autor: </b>{{ post.author.name }}</span>
@@ -19,6 +20,8 @@
                     </div>
                     {% if app.user.id == post.author.id %}
                         <span class="edit">Edytuj</span>
+                        <span class="confirm">Zatwierdź</span>
+                        <span class="undo">Cofnij</span>
                         <span class="remove">Usuń</span>
                     {% endif %}
                 </div>

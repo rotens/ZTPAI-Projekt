@@ -19,12 +19,20 @@
             {% for post in posts %}
                 <div class="post">
                     <h1> {{ post.title }} </h1>
-                    <p> {{ post.content }}</p>
+
+                    <p>
+                        {{ post.content|slice(1, 500) }}
+                        {% if post.content|length > 500 %}
+                            <span>(...)</span>
+                        {% endif %}
+                    </p>
+
                     <div class="post-bottom">
                         <div class="date-author">
                             <span class="author"><b>Autor: </b>{{ post.author.name }}</span>
                             <span class="date"><b>Data dodania: </b>{{ post.date|date("Y-m-d H:i:s") }}</span>
                         </div>
+                        <a href="post/{{post.id}}" class="see-post">Zobacz post</a>
                         {% if app.user.id == post.author.id %}
                             <span class="remove">Usuń</span>
                         {% endif %}
