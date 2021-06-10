@@ -7,7 +7,16 @@ use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      itemOperations={
+ *          "get",
+ *          "post",
+ *          "put",
+ *          "delete"
+ *      },
+ *      collectionOperations={"get"}
+ * )
+ * 
  * @ORM\Entity(repositoryClass=PostRepository::class)
  */
 class Post

@@ -16,7 +16,7 @@ class SearchController extends AbstractController
 {
     public function search(Request $request): Response
     {
-        $defaultData = ['message' => 'Default message'];
+        $defaultData = ['message' => 'Search form'];
 
         $results = $this->getDoctrine()
             ->getRepository(Account::class)
@@ -38,13 +38,22 @@ class SearchController extends AbstractController
                 'required' => false
             ])
             ->add('start_date', TextType::class, [
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Od'
+                ]
             ])
             ->add('end_date', TextType::class, [
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Do'
+                ]
             ])
             ->add('search_input', TextType::class, [
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Szukana fraza'
+                ]
             ])
             ->add('search', ButtonType::class, [
                 'label' => false,

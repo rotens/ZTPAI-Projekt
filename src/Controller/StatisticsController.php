@@ -13,7 +13,7 @@ class StatisticsController extends AbstractController
     public function statistics(): Response
     {
 
-        $defaultData = ['message' => 'Default message'];
+        $defaultData = ['message' => 'Statistics form'];
 
         $results = $this->getDoctrine()
             ->getRepository(Account::class)
