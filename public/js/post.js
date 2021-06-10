@@ -84,6 +84,3 @@ confirmButton.addEventListener("click", function (event) {
 
     
 });
-
-
- 

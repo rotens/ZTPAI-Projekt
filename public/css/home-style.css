@@ -69,10 +69,17 @@ main p {
 .remove {
     color: red;
     margin-right: 1em;
+    cursor: pointer;
 }
 
 .see-post {
-    
+    text-decoration: none;
+    color: #1877F2;
+    cursor: pointer;
+}
+
+.see-post:visited {
+    color: #1877F2;
 }
 
 @media only screen and (max-device-width: 640px) {

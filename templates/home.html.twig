@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/header-nav-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home-style.css') }}">
     <script src="{{ asset('https://kit.fontawesome.com/3d9e005fd2.js') }}" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('js/home.js') }}" defer></script>
     <title>Twarzobaza</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
                     <h1> {{ post.title }} </h1>
 
                     <p>
-                        {{ post.content|slice(1, 500) }}
+                        {{ post.content|slice(0, 500) }}
                         {% if post.content|length > 500 %}
                             <span>(...)</span>
                         {% endif %}

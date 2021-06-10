@@ -12,10 +12,6 @@ use App\Dto\MessageInput;
 use App\Dto\MessageOutput;
 
 /**
- * @ApiResource(
- *      collectionOperations={"get", "post"},
- *      itemOperations={"get", "put", "delete"},
- * )
  * @ORM\Entity(repositoryClass=MessageRepository::class)
  */
 class Message

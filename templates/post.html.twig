@@ -22,7 +22,7 @@
                         <span class="edit">Edytuj</span>
                         <span class="confirm">Zatwierdź</span>
                         <span class="undo">Cofnij</span>
-                        <span class="remove">Usuń</span>
+                        <a class="remove" href="{{ path('removepost', {'id': post.id}) }}">Usuń</a>
                     {% endif %}
                 </div>
                 <input class="postid" type="hidden" value="{{ post.id }}">

@@ -79,4 +79,20 @@ class PostController extends AbstractController
             "post" => $post
         ]);
     }
+
+    /**
+     * @Route("removepost/{id}", name="removepost")
+     */
+    public function removePost(int $id): Response
+    {
+        $post = $this->getDoctrine()
+            ->getRepository(Post::class)
+            ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($post);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("home");
+    }
 }

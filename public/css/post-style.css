@@ -59,20 +59,29 @@ main {
 
 .remove {
     color: red;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.remove:visited {
+    color: red;
 }
 
 .edit {
     color:  #1877F2;
+    cursor: pointer;
 }
 
 .confirm {
     display: none;
     color:  #1877F2;
+    cursor: pointer;
 }
 
 .undo {
     display: none;
     color: red;
+    cursor: pointer;
 }
 
 @media only screen and (max-device-width: 640px) {
